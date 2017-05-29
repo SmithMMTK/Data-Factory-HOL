@@ -1,0 +1,68 @@
+{
+    "name": "usql-orders7",
+    "properties": {
+        "structure": [
+            {
+                "name": "OrderDate",
+                "type": "Datetime"
+            },
+            {
+                "name": "OrderID",
+                "type": "Int64"
+            },
+            {
+                "name": "CustomerID ",
+                "type": "Int64"
+            },
+            {
+                "name": "CustomerName",
+                "type": "String"
+            },
+            {
+                "name": "Total",
+                "type": "Decimal"
+            }
+        ],
+        "published": false,
+        "type": "AzureDataLakeStore",
+        "linkedServiceName": "adl-store",
+        "typeProperties": {
+            "fileName": "{day}.txt",
+            "folderPath": "sales7/order/{Year}/{Month}",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": "\t"
+            },
+            "partitionedBy": [
+                {
+                    "name": "Year",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy"
+                    }
+                },
+                {
+                    "name": "Month",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "MM"
+                    }
+                },
+                {
+                    "name": "day",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "dd"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        }
+    }
+}

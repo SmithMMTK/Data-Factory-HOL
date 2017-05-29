@@ -1,0 +1,45 @@
+{
+    "name": "dbo-usql_lineitem",
+    "properties": {
+        "structure": [
+            {
+                "name": "OrderID",
+                "type": "Int64"
+            },
+            {
+                "name": "OrderLineID",
+                "type": "Int64"
+            },
+            {
+                "name": "StockItemID",
+                "type": "Int64"
+            },
+            {
+                "name": "StockItemName",
+                "type": "String"
+            },
+            {
+                "name": "Quantity",
+                "type": "Int64"
+            },
+            {
+                "name": "UnitPrice",
+                "type": "Double"
+            },
+            {
+                "name": "LineTotal",
+                "type": "Double"
+            }
+        ],
+        "published": false,
+        "type": "AzureSqlTable",
+        "linkedServiceName": "sql-database",
+        "typeProperties": {
+            "tableName": "dbo.LineItems"
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        }
+    }
+}

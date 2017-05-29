@@ -1,0 +1,37 @@
+{
+    "name": "dbo-usql_orders",
+    "properties": {
+        "structure": [
+            {
+                "name": "OrderDate",
+                "type": "Datetime"
+            },
+            {
+                "name": "OrderID",
+                "type": "Int64"
+            },
+            {
+                "name": "CustomerID",
+                "type": "Int64"
+            },
+            {
+                "name": "CustomerName",
+                "type": "String"
+            },
+            {
+                "name": "Total",
+                "type": "Decimal"
+            }
+        ],
+        "published": false,
+        "type": "AzureSqlTable",
+        "linkedServiceName": "sql-database",
+        "typeProperties": {
+            "tableName": "dbo.Orders"
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        }
+    }
+}

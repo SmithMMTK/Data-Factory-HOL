@@ -1,0 +1,76 @@
+{
+    "name": "usql-lineitemsumm7",
+    "properties": {
+        "structure": [
+            {
+                "name": "OrderID",
+                "type": "Int64"
+            },
+            {
+                "name": "OrderLineID",
+                "type": "Int64"
+            },
+            {
+                "name": "StockItemID",
+                "type": "Int64"
+            },
+            {
+                "name": "StockItemName",
+                "type": "String"
+            },
+            {
+                "name": "Quantity",
+                "type": "Int64"
+            },
+            {
+                "name": "UnitPrice",
+                "type": "Double"
+            },
+            {
+                "name": "LineTotal",
+                "type": "Double"
+            }
+        ],
+        "published": false,
+        "type": "AzureDataLakeStore",
+        "linkedServiceName": "adl-store",
+        "typeProperties": {
+            "fileName": "{day}.txt",
+            "folderPath": "sales7/line/{Year}/{Month}",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": "\t"
+            },
+            "partitionedBy": [
+                {
+                    "name": "Year",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy"
+                    }
+                },
+                {
+                    "name": "Month",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "MM"
+                    }
+                },
+                {
+                    "name": "day",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "dd"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        }
+    }
+}
